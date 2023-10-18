@@ -7,9 +7,9 @@ import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 
 @Entity
-class User(
+class Users(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id : Long?,
+    val id : Long? = null,
     val name: String,
 
     @Embedded
