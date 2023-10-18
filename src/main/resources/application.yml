@@ -1,0 +1,13 @@
+server:
+  port: 8088
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/koupang_test
+    username: koupang_test
+    password: koupang_test
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
