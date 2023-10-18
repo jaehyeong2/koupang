@@ -6,6 +6,8 @@ plugins {
 	kotlin("jvm") version "1.8.22"
 	kotlin("plugin.spring") version "1.8.22"
 	kotlin("plugin.jpa") version "1.8.22"
+	kotlin("kapt") version "1.8.21"
+	idea
 }
 
 group = "jjfactory"
@@ -14,7 +16,6 @@ version = "0.0.1-SNAPSHOT"
 java {
 	sourceCompatibility = JavaVersion.VERSION_17
 }
-
 
 repositories {
 	mavenCentral()
@@ -29,9 +30,9 @@ dependencies {
 
 	// queryDSL
 	implementation ("com.querydsl:querydsl-jpa:5.0.0:jakarta")
-	annotationProcessor("com.querydsl:querydsl-apt:5.0.0:jakarta")
-	annotationProcessor("jakarta.annotation:jakarta.annotation-api")
-	annotationProcessor("jakarta.persistence:jakarta.persistence-api")
+	kapt ("com.querydsl:querydsl-apt:5.0.0:jakarta")
+	kapt ("jakarta.annotation:jakarta.annotation-api")
+	kapt ("jakarta.persistence:jakarta.persistence-api")
 
 	runtimeOnly("com.h2database:h2")
 	runtimeOnly("org.postgresql:postgresql")
@@ -42,6 +43,22 @@ tasks.withType<KotlinCompile> {
 	kotlinOptions {
 		freeCompilerArgs += "-Xjsr305=strict"
 		jvmTarget = "17"
+	}
+}
+
+val querydslDir =  "build/generated/source/kapt/main"
+
+idea {
+	module {
+		val kaptMain = file(querydslDir)
+		sourceDirs.add(kaptMain)
+		generatedSourceDirs.add(kaptMain)
+	}
+}
+
+tasks.named("clean") {
+	doLast {
+		file(querydslDir).deleteRecursively()
 	}
 }
 
