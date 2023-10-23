@@ -6,7 +6,7 @@ import jjfactory.koupang.seller.domain.Seller
 import jjfactory.koupang.seller.domain.product.Product
 import jjfactory.koupang.seller.domain.product.ProductReview
 import jjfactory.koupang.user.domain.Address
-import jjfactory.koupang.user.domain.Users
+import jjfactory.koupang.user.domain.User
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -24,9 +24,14 @@ class ProductReviewDslRepoTest {
     @Transactional
     @Test
     fun `유저아이디로 정상 조회`() {
-        val user = Users(
+        val user = User(
             name = "lee",
-            address = Address()
+            username = "testet",
+            address = Address(
+                zipCode = "12111",
+                city = "seoul",
+                street = "xxx Gil"
+            )
         )
 
         entityManager.persist(user)
