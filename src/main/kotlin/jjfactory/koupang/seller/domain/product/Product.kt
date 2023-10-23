@@ -11,5 +11,6 @@ class Product(
     val seller: Seller,
 
     val name: String,
-    val code: String
+    val code: String,
+    val qty: Int = 0
 )
