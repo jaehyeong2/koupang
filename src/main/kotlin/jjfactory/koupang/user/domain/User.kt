@@ -17,6 +17,8 @@ class User(
     val name: String,
     var username: String,
 
+    val test: String? = null,
+
     @Embedded
     var address: Address,
 ){

@@ -4,6 +4,6 @@ import org.springframework.batch.core.configuration.annotation.EnableBatchProces
 import org.springframework.context.annotation.Configuration
 
 @Configuration
-@EnableBatchProcessing
+//@EnableBatchProcessing
 class BatchConfig {
 }

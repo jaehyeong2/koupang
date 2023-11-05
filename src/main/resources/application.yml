@@ -11,3 +11,16 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+
+  batch:
+    job:
+      name:
+    jdbc:
+      initialize-schema: always
+
+
+kakao:
+  api-key: random

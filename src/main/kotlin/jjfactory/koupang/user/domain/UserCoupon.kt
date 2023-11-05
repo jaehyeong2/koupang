@@ -14,9 +14,17 @@ class UserCoupon(
     val userId: Long,
     val couponId: Long,
 
+    var isUsed: Boolean = false,
+    var usedDt: LocalDateTime? = null,
+
     val createDt: LocalDateTime,
     val expireDt: LocalDateTime
 ) {
+
+    fun use(){
+        isUsed = true
+        usedDt = LocalDateTime.now()
+    }
 
     companion object {
         fun of(userId:Long, couponId: Long): UserCoupon {

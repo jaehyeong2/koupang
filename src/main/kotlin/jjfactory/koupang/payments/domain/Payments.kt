@@ -1,10 +1,6 @@
 package jjfactory.koupang.payments.domain
 
-import jakarta.persistence.Embedded
-import jakarta.persistence.Entity
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
-import jakarta.persistence.Id
+import jakarta.persistence.*
 
 @Entity
 class Payments(
@@ -12,6 +8,7 @@ class Payments(
     val id : Long?,
 
     val orderId: Long,
-    val cardId: Long
+    val cardId: Long,
 
+    val paymentKey: String
 )
