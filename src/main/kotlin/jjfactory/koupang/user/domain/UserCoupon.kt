@@ -4,6 +4,7 @@ import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
+import org.hibernate.annotations.ColumnDefault
 import org.hibernate.annotations.CreationTimestamp
 import java.time.LocalDateTime
 
@@ -14,16 +15,26 @@ class UserCoupon(
     val userId: Long,
     val couponId: Long,
 
-    var isUsed: Boolean = false,
-    var usedDt: LocalDateTime? = null,
+    private var isUsed: Boolean = false,
+    private var usedDt: LocalDateTime? = null,
+    @ColumnDefault("false")
+    private var isExpired: Boolean = false,
 
     val createDt: LocalDateTime,
     val expireDt: LocalDateTime
 ) {
 
+    fun expire(){
+        if(!isExpired){
+            isExpired = true
+        }
+    }
+
     fun use(){
-        isUsed = true
-        usedDt = LocalDateTime.now()
+        if(!isUsed){
+            isUsed = true
+            usedDt = LocalDateTime.now()
+        }
     }
 
     companion object {
