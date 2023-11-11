@@ -13,6 +13,10 @@ class UserFacade(
         return userService.getInfo(id)
     }
 
+    fun getInfo2(id: Long): UserInfo.Main {
+        return userService.getInfo2(id)
+    }
+
     fun store(command: UserCommand.Create){
         userService.store(command)
     }

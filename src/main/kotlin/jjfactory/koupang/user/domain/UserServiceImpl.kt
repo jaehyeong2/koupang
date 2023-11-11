@@ -42,6 +42,20 @@ class UserServiceImpl(
         )
     }
 
+    @Cacheable(value = ["userInfo"], cacheManager = "longCacheManager")
+    @Transactional(readOnly = true)
+    override fun getInfo2(id: Long): UserInfo.Main {
+        val user = userReader.getById(id)
+        logger.info("service call")
+
+
+        return UserInfo.Main(
+            name = user.name,
+            username = user.username,
+            address = user.address
+        )
+    }
+
     @Transactional(readOnly = true)
     override fun getAllUsers(): List<UserInfo.Main> {
         return userReader.getAllUsers().map { user ->

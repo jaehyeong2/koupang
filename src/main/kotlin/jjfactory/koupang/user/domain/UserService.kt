@@ -5,4 +5,5 @@ interface UserService {
     fun getInfo(id: Long): UserInfo.Main
     fun modify(id: Long, command: UserCommand.Modify): Long
     fun getAllUsers(): List<UserInfo.Main>
+    fun getInfo2(id: Long): UserInfo.Main
 }
