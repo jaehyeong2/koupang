@@ -1,5 +1,6 @@
 package jjfactory.koupang.user.domain
 
+import jjfactory.koupang.system.ActivityLogRepo
 import org.slf4j.LoggerFactory
 import org.springframework.cache.annotation.Cacheable
 import org.springframework.stereotype.Component
@@ -10,7 +11,8 @@ import java.lang.IllegalArgumentException
 @Component
 class UserServiceImpl(
     private val userReader: UserReader,
-    private val userStore: UserStore
+    private val userStore: UserStore,
+    private val activityLogRepo: ActivityLogRepo
 ) : UserService {
     private val logger = LoggerFactory.getLogger(javaClass)
 
@@ -66,4 +68,25 @@ class UserServiceImpl(
             )
         }
     }
+
+
+//    fun function(){
+//        val map : MutableMap<Long, PostDto> = HashMap()
+//
+//        activityLogRepo.findAll().forEach {
+//            map[it.id!!] = PostDto(it.content)
+//        }
+//
+//        map.mapKeys {
+//
+//        }
+//
+//
+//    }
+
+
 }
+
+data class PostDto(
+    val content: String
+)

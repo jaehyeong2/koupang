@@ -24,3 +24,6 @@ spring:
 
 kakao:
   api-key: random
+
+application:
+  Environment: local
