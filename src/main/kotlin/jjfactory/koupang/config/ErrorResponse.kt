@@ -8,4 +8,8 @@ data class ErrorResponse(
     var errorCode: String? = status.toString(),
     var exceptionType: String? = null,
     var message: String?,
+
+
 )
+
+
